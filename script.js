@@ -130,15 +130,30 @@ function contains(object, value){
     return false
 }
 
-// parse multidimensional array
-// var seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
+// sum squares of numbers in array
 
-let seven = [[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]
-function totalIntegers(array2){
-    if(Array.isArray(array2[array2.length-1])){
-        return totalIntegers(array2.length-1)
-    }
-    array2[array2.length-1].pop()
+// var l = [1,2,3]; 
+// console.log(SumSquares(l)); // 1 + 4 + 9 = 14
+
+// l = [[1,2],3]; 
+// console.log(SumSquares(l)); // 1 + 4 + 9 = 14
+
+// l = [[[[[[[[[1]]]]]]]]] 
+// console.log(SumSquares(l)); // 1 = 1
+
+l = [10,[[10],10],[10]] 
+console.log(SumSquares(l)); // 100 + 100 + 100 + 100 = 400
+
+function SumSquares(array){
+    let total = 0;
+
+    array.forEach(element => {
+        if(Array.isArray(element)){
+            total += SumSquares(element)
+        }else{
+            total += element*element
+        }
+        
+    });
+    return total
 }
-
-totalIntegers(seven)
