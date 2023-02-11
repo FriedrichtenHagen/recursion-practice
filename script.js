@@ -207,3 +207,47 @@ function replicate(n, x){
         return newArray
     }
 }
+
+
+let testArray = [3,2,6,7,2]
+
+
+function mergeSort(array){
+    // base case
+    if(array.length<2){
+        return array[0]
+    }
+
+    else{
+        // divide the array into left and right half
+        let arr1 = array.splice(0, Math.floor(array.length/2))
+        let arr2 = array
+
+
+        // compare the two array items
+        let left = mergeSort(arr1)
+        let right = mergeSort(arr2)
+        let merged = [];
+
+        for(let l=0; l<left.length; l++){
+            for(let r=0; r<right.length; r++){
+
+
+                if(left[l]<right[r]){
+                    // already in correct order
+                    merged = [left[i], right[i]]
+                }
+                else if(left[l]>right[r]){
+                     // the order is switched
+                    merged = [right[i], left[i]]
+                }
+                else{
+                    // they are equal
+                    // already in correct order
+                    merged = [left[i], right[i]]
+                }
+            }
+        }
+    }
+}
+mergeSort(testArray)
