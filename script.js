@@ -174,7 +174,7 @@ function contains(object, value){
 // console.log(SumSquares(l)); // 1 = 1
 
 l = [10,[[10],10],[10]] 
-console.log(SumSquares(l)); // 100 + 100 + 100 + 100 = 400
+// console.log(SumSquares(l)); // 100 + 100 + 100 + 100 = 400
 
 function SumSquares(array){
     let total = 0;
@@ -209,13 +209,13 @@ function replicate(n, x){
 }
 
 
-let testArray = [3,2,6,7,2]
+let testArray = [3,2,8,6,7,5,4,9,1]
 
 
 function mergeSort(array){
     // base case
     if(array.length<2){
-        return array[0]
+        return array
     }
 
     else{
@@ -227,27 +227,42 @@ function mergeSort(array){
         // compare the two array items
         let left = mergeSort(arr1)
         let right = mergeSort(arr2)
+
+        // start merging the arrays after the base case has been reached
         let merged = [];
+        let totalLength = left.length + right.length
 
-        for(let l=0; l<left.length; l++){
-            for(let r=0; r<right.length; r++){
+        for(let i=0; i<totalLength; i++){
+            if(left[0]<right[0]){
+                // move item to merged array
+                merged.push(left[0])
+                // remove item from left array
+                left.shift()
+                if(left.length<1){
+                    // push whole array to merged
+                    for(let r=0; r<right.length; r++){
+                        merged.push(right[r])
+                        i++
+                    }
 
-
-                if(left[l]<right[r]){
-                    // already in correct order
-                    merged = [left[i], right[i]]
                 }
-                else if(left[l]>right[r]){
-                     // the order is switched
-                    merged = [right[i], left[i]]
-                }
-                else{
-                    // they are equal
-                    // already in correct order
-                    merged = [left[i], right[i]]
+            }
+            else if(left[0]>right[0]){
+                // move item to merged array
+                merged.push(right[0])
+                // remove item from left array
+                right.shift()
+                if(right.length<1){
+                    // push whole array to merged
+                    for(let l=0; l<left.length; l++){
+                        merged.push(left[l])
+                        i++
+                    }
                 }
             }
         }
+        return merged
     }
 }
-mergeSort(testArray)
+console.log(testArray)
+console.log(mergeSort(testArray))
