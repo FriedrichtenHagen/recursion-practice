@@ -41,14 +41,7 @@ let linkedList = {
         }
     }
 }
-// output names
 
-// function linkedList(linkedList){
-//     if(linkedList.next){
-//         linkedList(linkedList.next)
-//     }
-//     console.log(linkedList.value)
-// }
 // reverse order
 function reverseLinkedList(test){
     if(test.next){
@@ -65,21 +58,60 @@ function facOff(n){
     return (n!==1) ? n*facOff(n-1) : 1;
 }    
 
+
+
 // fibonacci numbers
+// 5 = [0,1,1,2,3]
 
-// 5 = 4+3
-
-function fib(n){
-    if(n===1){
-        return 1
-    }
-    else if(n===2){
-        return 1
+function fibsRec(n){
+    if(n<2){
+        return n
     }
     else{
-        return fib(n-1)+fib(n-2)
+        return (fibsRec(n-1)+fibsRec(n-2))
     }
 }
+function fibsRecStart(n){
+    let arrayFib = []
+    for(let i=0; i<n; i++){
+        arrayFib.push(fibsRec(i))       
+    }
+    console.log(arrayFib)
+}
+
+
+
+
+
+// fibonacci numbers iteratively
+// 5 = [0,1,1,2,3]
+
+function fibs(n){
+    let fibcount = 0;
+    let array = [];
+
+    for(let i=0; i<n; i++){
+        if(i===0){
+            fibcount=0;
+        }
+        else if(i===1){
+            fibcount=1;
+        }
+        else if(i===2){
+            fibcount=1;
+        }
+        else{ // starting from number 4
+            fibcount= array[i-1]+array[i-2]
+        }
+        array.push(fibcount)
+    }
+    return array
+}
+
+
+
+
+
 
 
 // sum all numbers
@@ -160,9 +192,9 @@ function SumSquares(array){
 
 // The function should return an array containing repetitions of the number argument. For instance, replicate(3, 5) should return [5,5,5]. If the times argument is negative, return an empty array.
 
-console.log(replicate(3, 5)) // [5, 5, 5]
-console.log(replicate(1, 69)) // [69]
-console.log(replicate(-2, 6)) // []
+// console.log(replicate(3, 5)) // [5, 5, 5]
+// console.log(replicate(1, 69)) // [69]
+// console.log(replicate(-2, 6)) // []
 
 function replicate(n, x){
     if(!n){
