@@ -208,7 +208,6 @@ function replicate(n, x){
     }
 }
 
-
 let testArray = [3,2,8,6,7,5,4,9,1]
 
 
@@ -217,12 +216,10 @@ function mergeSort(array){
     if(array.length<2){
         return array
     }
-
     else{
         // divide the array into left and right half
         let arr1 = array.splice(0, Math.floor(array.length/2))
         let arr2 = array
-
 
         // compare the two array items
         let left = mergeSort(arr1)
@@ -244,7 +241,6 @@ function mergeSort(array){
                         merged.push(right[r])
                         i++
                     }
-
                 }
             }
             else if(left[0]>right[0]){
