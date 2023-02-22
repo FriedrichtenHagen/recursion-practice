@@ -209,6 +209,7 @@ function replicate(n, x){
 }
 
 let testArray = [3,2,8,6,7,5,4,9,1]
+let arr = [1, 74, 4, 234, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 
 
 function mergeSort(array){
@@ -262,3 +263,4 @@ function mergeSort(array){
 }
 console.log(testArray)
 console.log(mergeSort(testArray))
+console.log(mergeSort(arr))
